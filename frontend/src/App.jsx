@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Collection from './pages/Collection';
 import About from "./pages//About";
@@ -22,6 +22,7 @@ const App = () => {
       <ToastContainer/>
       <Navbar />
       <SearchBar/>
+      <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/collection' element={<Collection/>}/>
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/orders' element={<Orders/>}/>
         <Route path='/verify' element={<Verify/>}/>
       </Routes>
+      </BrowserRouter>
       <Footer/>
     </div>
   )
