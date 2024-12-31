@@ -15,18 +15,34 @@
 //   }
 // });
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
+
+// export default defineConfig({
+//   plugins: [react()],
+//   server: {port: 5174},
+//   optimizeDeps: {
+//     include: ['react-router-dom']
+//   },
+//   build: {
+//     commonjsOptions: {
+//       include: [/react-router-dom/, /node_modules/]
+//     }
+//   }
+// })
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
   server: {port: 5174},
   optimizeDeps: {
-    include: ['react-router-dom']
+    include: ['react', 'react-dom', 'react-router-dom']
   },
   build: {
     commonjsOptions: {
-      include: [/react-router-dom/, /node_modules/]
+      include: [/node_modules/]
     }
   }
-})
+});
