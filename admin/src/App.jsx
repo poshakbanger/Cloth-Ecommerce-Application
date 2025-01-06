@@ -18,7 +18,7 @@ const App = () => {
   },[token])
 
   return (
-    <BrowserRouter>
+    
     <div className='bg-gray-50 min-h-screen'>
       <ToastContainer/>
       { token === ""
@@ -41,7 +41,7 @@ const App = () => {
       </>
       }
     </div>
-    </BrowserRouter>
+    
   )
 }
 
