@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const Login = () => {
 
     const [currentState, setCurrentState] = useState('Login');
-  const { token, setToken, navigate, backendurl = 'http://localhost:4000' } = useContext(ShopContext);
+  const { token, setToken, navigate, backendurl = 'http://localhost:4000' } = useContext(ShopContext);   //by a chat gpt
 
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');

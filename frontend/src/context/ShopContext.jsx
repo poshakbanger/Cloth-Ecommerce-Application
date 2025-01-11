@@ -42,7 +42,7 @@ const ShopContextProvider = (props) => {
 
             if (token) {
                 try {
-                    await axios.post(backendUrl + '/api/cart/add', {itemId,size}, {headers:{token}})
+                    await axios.post(backendUrl+'/api/cart/add', {itemId,size}, {headers:{token}})
                 } catch (error) {
                     console.log(error)
                     toast.error(error.message)
@@ -68,6 +68,7 @@ const ShopContextProvider = (props) => {
     }
 
     const updateQuantity = async (itemId,size,quantity) => {
+
         let cartData = structuredClone(cartItems);
 
         cartData[itemId][size] = quantity;
@@ -133,20 +134,20 @@ const ShopContextProvider = (props) => {
         getProductsData()
     },[]);
 
-    useEffect(() => {
-        if (!token && localStorage.getItem('token')) {
-            const localToken = localStorage.getItem('token');
-            setToken(localToken);
-            getUserCart(localToken);
-        }
-    }, [token]);        // through chat gpt
-
-    // useEffect(()=> {
-    //     if(!token && localStorage.getItem('token')){
-    //         setToken(localStorage.getItem('token'));
-    //         getUserCart();
+    // useEffect(() => {
+    //     if (!token && localStorage.getItem('token')) {
+    //         const localToken = localStorage.getItem('token');
+    //         setToken(localToken);
+    //         getUserCart(localToken);
     //     }
-    // },[]);
+    // }, [token]);        // through chat gpt
+
+    useEffect(()=> {
+        if(!token && localStorage.getItem('token')){
+            setToken(localStorage.getItem('token'));
+            getUserCart(localStorage.getItem('token'));
+        }
+    },[]);
 
     const value = {
         products, currency, delivery_fee,
