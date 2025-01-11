@@ -7,6 +7,7 @@ import List from "./pages/List";
 import Orders from "./pages/Orders";
 import Login from './components/Login';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL
 export const currency = '₹';
@@ -18,13 +19,11 @@ const App = () => {
   },[token])
 
   return (
-    
     <div className='bg-gray-50 min-h-screen'>
       <ToastContainer/>
       { token === ""
       ? <Login setToken={setToken}/> 
-      :
-      <>
+      : <>
       <Navbar setToken={setToken}/>
       <hr />
       <div className='flex w-full'>
