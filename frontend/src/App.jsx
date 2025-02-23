@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Collection from './pages/Collection';
-import About from "./pages//About";
-=======
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Collection from "./pages/Collection";
 import About from "./pages/About";
->>>>>>> 493b4a704f734dddf093e1242094d6d0f5230ba3
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
@@ -26,7 +18,7 @@ import Verify from "./pages/Verify";
 
 const App = () => {
   return (
-    <Router>
+    
       <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
         <ToastContainer />
         <Navbar />
@@ -45,7 +37,7 @@ const App = () => {
         </Routes>
         <Footer />
       </div>
-    </Router>
+    
   );
 };
 
