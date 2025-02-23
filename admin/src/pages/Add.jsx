@@ -27,7 +27,7 @@ const Add = ({token}) => {
 
       formData.append("name",name);
       formData.append("description",description);
-      formData.append("price",price);
+      formData.append("price",price); 
       formData.append("category",category);
       formData.append("subCategory",subCategory);
       formData.append("bestseller",bestseller);
