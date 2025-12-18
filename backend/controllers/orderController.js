@@ -6,7 +6,7 @@ import Stripe from "stripe";
 
 // global variables
 const currency = 'inr';
-const deliveryCharge = 10;
+const deliveryCharge = 50;
 
 // gateway initialize
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -48,6 +48,7 @@ const placeOrder = async (req,res) => {
 const placeOrderStripe = async (req,res) => {
     try {
         const { userId, items, amount, address } = req.body;
+
         const { origin } = req.headers;
 
         const orderData = {
@@ -101,23 +102,24 @@ const placeOrderStripe = async (req,res) => {
 }
 
 // verify Stripe
-const verifyStripe = async (req,res) => {
-    const { orderId, success, userId } = req.body;
+// const verifyStripe = async (req,res) => {
+    
+//     const { orderId, success, userId } = req.body;  // real
 
-    try {
-        if (success === "true") {
-            await orderModel.findByIdAndUpdate(orderId, {payment:true});
-            await userModel.findByIdAndUpdate(userId, {cartData: {}})
-            res.json({success: true});
-        } else {
-            await orderModel.findByIdAndDelete(orderId);
-            res.json({success:false});
-        }
-    } catch (error) {
-        console.log(error);
-        res.json({success:false, message: error.message});
-    }
-}
+//     try {
+//         if (success === "true") {
+//             await orderModel.findByIdAndUpdate(orderId, {payment:true});
+//             await userModel.findByIdAndUpdate(userId, {cartData: {}})
+//             res.json({success: true});
+//         } else {
+//             await orderModel.findByIdAndDelete(orderId);
+//             res.json({success:false});
+//         }
+//     } catch (error) {
+//         console.log(error);
+//         res.json({success:false, message: error.message});
+//     }
+// }
 
 //Placing orders using Razorpay method
 // const placeOrderRazorpay = async (req,res) => {
@@ -215,4 +217,4 @@ const updateStatus = async (req,res) => {
 
 // export { verifyRazorpay, verifyStripe, placeOrder, placeOrderRazorpay, placeOrderStripe, allOrders, userOrders, updateStatus };
 
-export {  verifyStripe, placeOrder, placeOrderStripe, allOrders, userOrders, updateStatus };
+export {  placeOrder, placeOrderStripe, allOrders, userOrders, updateStatus };

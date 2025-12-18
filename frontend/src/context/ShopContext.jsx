@@ -8,7 +8,7 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props) => {
 
     const currency = '₹';
-    const delivery_fee = 10;
+    const delivery_fee = 50;
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [search,setSearch] = useState('');
     const [showSearch,setShowSearch] = useState(false);
@@ -123,6 +123,8 @@ const ShopContextProvider = (props) => {
             
             if (response.data.success) {
                 setCartItems(response.data.cartData)
+            }else{
+                toast.error(response.data.message)
             }
         } catch (error) {
             console.log(error);
