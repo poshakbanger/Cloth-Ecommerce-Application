@@ -16,7 +16,11 @@ connectedCloudinary()
 
 // middlewares
 app.use(express.json())
-app.use(cors())
+// app.use(cors())  // real
+app.use(cors({
+  origin: 'http://localhost:4000', // Or your local URL
+  credentials: true // Crucial for cookies
+}))
 
 // api endpoints
 app.use('/api/user',userRouter)
@@ -28,5 +32,5 @@ app.use('/api/order',orderRouter);
 app.get('/', (req,res) => {
     res.send("API Working")
 })
-
-app.listen(port, ()=> console.log('Server started on PORT: '+ port))
+//app.listen(port, ()=> console.log('Server started on PORT: '+ port))  real
+app.listen(port, '0.0.0.0', ()=> console.log('Server started on PORT: '+ port))
