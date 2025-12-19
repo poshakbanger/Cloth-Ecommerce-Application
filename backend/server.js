@@ -16,11 +16,8 @@ connectedCloudinary()
 
 // middlewares
 app.use(express.json())
-// app.use(cors())  // real
-app.use(cors({
-  origin: 'http://localhost:4000', // Or your local URL
-  credentials: true // Crucial for cookies
-}))
+app.use(cors())  // real
+
 
 // api endpoints
 app.use('/api/user',userRouter)
